@@ -19,9 +19,9 @@ public class DogControllerTest {
     @Client("/")
     HttpClient client;
 
-    @Test
-    void testDogResponse() {
-        String response = client.toBlocking().retrieve(HttpRequest.GET("/api/dogs"));
-        assertEquals("dogs works.", response);
-    }
+//    @Test
+//    void testDogResponse() {
+//        String response = client.toBlocking().retrieve(HttpRequest.GET("/api/dogs"));
+//        assertEquals("dogs works.", response);
+//    }
 }

@@ -15,8 +15,10 @@ public class DogController {
         this.dogService = dogService;
     }
 
-    @Get(produces = MediaType.TEXT_PLAIN)
-    public String index() { return "dogs works."; }
+    @Get(produces = MediaType.APPLICATION_JSON)
+    public Dog[] index() {
+        return dogService.getAllDogs();
+    }
 
     @Get(value = "/{id}", produces = MediaType.APPLICATION_JSON)
     public Dog getDog(int id){
