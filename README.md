@@ -1,3 +1,7 @@
+# Dog Manager App
+
+I created this app as a learning exercise for the Micronaut Java framework. It is a simple HTTP server that uses REST endpoints to manage dogs 🐕
+
 ## Micronaut 4.3.5 Documentation
 
 - [User Guide](https://docs.micronaut.io/4.3.5/guide/index.html)
