@@ -4,12 +4,12 @@ import io.micronaut.serde.annotation.Serdeable;
 import jakarta.validation.constraints.NotBlank;
 
 @Serdeable
-public class SaveDogCommand {
-    @NotBlank String name;
-    @NotBlank String breed;
-    int age;
+public class DogSaveCommand {
+    @NotBlank private String name;
+    @NotBlank private String breed;
+    private int age;
 
-    public SaveDogCommand(String name, String breed, int age) {
+    public DogSaveCommand(String name, String breed, int age) {
         this.name = name;
         this.breed = breed;
         this.age = age;
