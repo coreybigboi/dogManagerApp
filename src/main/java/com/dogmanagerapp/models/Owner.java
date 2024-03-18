@@ -1,20 +1,24 @@
 package com.dogmanagerapp.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "owners")
 public class Owner {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int id;
+    public long id;
 
+    @NotNull
     @Column
     public String name;
 
+    @NotNull
     @Column
     public int age;
 
+    @NotNull
     @Column
     public String address;
 
@@ -22,18 +26,18 @@ public class Owner {
 
     }
 
-    public Owner(int id, String name, int age, String address) {
+    public Owner(long id, String name, int age, String address) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.address = address;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

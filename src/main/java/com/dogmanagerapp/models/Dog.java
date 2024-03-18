@@ -2,22 +2,26 @@ package com.dogmanagerapp.models;
 
 import io.micronaut.serde.annotation.Serdeable;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "dogs")
-@Serdeable.Serializable()
+@Serdeable
 public class Dog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
+    @NotNull
     @Column
     private String name;
 
+    @NotNull
     @Column
     private String breed;
 
+    @NotNull
     @Column
     private int age;
 
@@ -25,18 +29,17 @@ public class Dog {
 
     }
 
-    public Dog(int id, String name, String breed, int age) {
-        this.id = id;
+    public Dog(String name, String breed, int age) {
         this.name = name;
         this.breed = breed;
         this.age = age;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
