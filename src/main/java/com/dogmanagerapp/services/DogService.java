@@ -8,12 +8,8 @@ import java.util.Optional;
 
 public interface DogService {
     Optional<Dog> findDogById(long id);
-
-    Dog saveDog(@NotNull Dog dog);
-
-    void deleteDogById(long id);
-
     List<Dog> findAllDogs();
-
+    Dog saveDog(@NotNull Dog dog);
+    void deleteDogById(long id);
     int updateDog(long id, @NotNull Dog dog);
 }

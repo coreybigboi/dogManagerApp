@@ -1,9 +1,15 @@
 package com.dogmanagerapp.services;
 
-import io.micronaut.http.MediaType;
-import io.micronaut.http.annotation.Get;
-import jakarta.inject.Singleton;
+import com.dogmanagerapp.models.Owner;
+import jakarta.validation.constraints.NotNull;
 
-@Singleton
-public class OwnerService {
+import java.util.List;
+import java.util.Optional;
+
+public interface OwnerService {
+    Optional<Owner> findOwnerById(long id);
+    List<Owner> findAllOwners();
+    Owner saveOwner(@NotNull Owner owner);
+    void deleteOwnerById(long id);
+    int updateOwner(long id, @NotNull Owner owner);
 }

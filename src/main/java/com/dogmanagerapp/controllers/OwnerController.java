@@ -1,6 +1,6 @@
 package com.dogmanagerapp.controllers;
 
-import com.dogmanagerapp.services.OwnerService;
+import com.dogmanagerapp.services.OwnerServiceImpl;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
@@ -8,9 +8,9 @@ import io.micronaut.http.annotation.Get;
 @Controller("/api/owners")
 public class OwnerController {
 
-    private final OwnerService ownerService;
+    private final OwnerServiceImpl ownerService;
 
-    public OwnerController(OwnerService ownerService) {
+    public OwnerController(OwnerServiceImpl ownerService) {
         this.ownerService = ownerService;
     }
 

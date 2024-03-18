@@ -1,7 +1,7 @@
 package com.dogmanagerapp.controllers;
 
 import com.dogmanagerapp.models.Dog;
-import com.dogmanagerapp.services.DogServiceImpl;
+import com.dogmanagerapp.services.DogService;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
@@ -16,9 +16,9 @@ import java.util.Optional;
 @Controller("/api/dogs")
 public class DogController {
 
-    private final DogServiceImpl dogService;
+    private final DogService dogService;
 
-    DogController(DogServiceImpl dogService) {
+    public DogController(DogService dogService) {
         this.dogService = dogService;
         this.createMockDogs();
     }
