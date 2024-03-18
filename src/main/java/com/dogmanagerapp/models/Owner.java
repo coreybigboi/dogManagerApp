@@ -8,19 +8,19 @@ import jakarta.validation.constraints.NotNull;
 public class Owner {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public long id;
+    private long id;
 
     @NotNull
     @Column
-    public String name;
+    private String name;
 
     @NotNull
     @Column
-    public int age;
+    private int age;
 
     @NotNull
     @Column
-    public String address;
+    private String address;
 
     public Owner() {
 

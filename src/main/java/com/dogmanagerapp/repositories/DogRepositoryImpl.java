@@ -1,6 +1,5 @@
 package com.dogmanagerapp.repositories;
 
-import com.dogmanagerapp.ApplicationConfiguration;
 import com.dogmanagerapp.models.Dog;
 import io.micronaut.transaction.annotation.ReadOnly;
 import io.micronaut.transaction.annotation.Transactional;
@@ -14,17 +13,23 @@ import java.util.Optional;
 @Singleton
 public class DogRepositoryImpl implements DogRepository {
     private final EntityManager entityManager;
-    private final ApplicationConfiguration applicationConfiguration;
 
-    public DogRepositoryImpl(EntityManager entityManager, ApplicationConfiguration applicationConfiguration) {
+    public DogRepositoryImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
-        this.applicationConfiguration = applicationConfiguration;
     }
     @Override
     @ReadOnly
     public Optional<Dog> findById(long id) {
         Optional<Dog> res = Optional.ofNullable(entityManager.find(Dog.class, id));
         return Optional.ofNullable(entityManager.find(Dog.class, id));
+    }
+
+    @Override
+    @ReadOnly
+    public List<Dog> findAll() {
+        final String queryString = "SELECT dog FROM Dog as dog";
+        final TypedQuery<Dog> query = entityManager.createQuery(queryString, Dog.class);
+        return query.getResultList();
     }
 
     @Override
@@ -38,14 +43,6 @@ public class DogRepositoryImpl implements DogRepository {
     @Transactional
     public void deleteById(long id) {
         findById(id).ifPresent(entityManager::remove);
-    }
-
-    @Override
-    @ReadOnly
-    public List<Dog> findAll() {
-        final String queryString = "SELECT dog FROM Dog as dog";
-        final TypedQuery<Dog> query = entityManager.createQuery(queryString, Dog.class);
-        return query.getResultList();
     }
 
     @Override
