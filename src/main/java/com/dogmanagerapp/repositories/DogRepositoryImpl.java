@@ -48,7 +48,7 @@ public class DogRepositoryImpl implements DogRepository {
     }
 
     @Override
-    @Transactional
+    @ReadOnly
     public List<Dog> findAll() {
         final String queryString = "SELECT dog FROM Dog as dog";
         final TypedQuery<Dog> query = entityManager.createQuery(queryString, Dog.class);

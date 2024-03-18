@@ -20,6 +20,9 @@ public class DogController {
 
     DogController(DogServiceImpl dogService) {
         this.dogService = dogService;
+        this.dogService.saveDog("dobby", "greyhound", 6);
+        this.dogService.saveDog("bella", "border collie", 6);
+        this.dogService.saveDog("luna", "border collie", 6);
     }
 
     @Get(produces = MediaType.APPLICATION_JSON)
