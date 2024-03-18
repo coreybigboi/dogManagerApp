@@ -1,7 +1,7 @@
 package com.dogmanagerapp.repositories;
 
 import com.dogmanagerapp.models.Dog;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,13 +9,11 @@ import java.util.Optional;
 public interface DogRepository {
     Optional<Dog> findById(long id);
 
-    Dog save(@NotBlank String name, String breed, int age);
-
-    Dog saveWithException(@NotBlank String name, String breed, int age);
+    Dog save(@NotNull Dog dog);
 
     void deleteById(long id);
 
     List<Dog> findAll();
 
-    int update(long id, String name, String breed, int age);
+    int update(long id, Dog dog);
 }

@@ -35,8 +35,8 @@ public class DogServiceImpl implements DogService {
     }
 
     @Override
-    public Dog saveDog(String name, String breed, int age) {
-        return this.dogRepository.save(name, breed, age);
+    public Dog saveDog(Dog dog) {
+        return this.dogRepository.save(dog);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class DogServiceImpl implements DogService {
     }
 
     @Override
-    public int updateDog(long id, String name, String breed, int age) {
-        return this.dogRepository.update(id, name, breed, age);
+    public int updateDog(long id, Dog dog) {
+        return this.dogRepository.update(id, dog);
     }
 }

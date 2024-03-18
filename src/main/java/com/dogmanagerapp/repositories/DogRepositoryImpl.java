@@ -29,16 +29,9 @@ public class DogRepositoryImpl implements DogRepository {
 
     @Override
     @Transactional
-    public Dog save(String name, String breed, int age) {
-        Dog dog = new Dog(name, breed, age);
+    public Dog save(Dog dog) {
         entityManager.persist(dog);
         return dog;
-    }
-
-    @Override
-    @Transactional
-    public Dog saveWithException(String name, String breed, int age) {
-        return null;
     }
 
     @Override
@@ -57,12 +50,12 @@ public class DogRepositoryImpl implements DogRepository {
 
     @Override
     @Transactional
-    public int update(long id, String name, String breed, int age) {
+    public int update(long id, Dog dog) {
         final String queryString = "UPDATE Dog dog SET name = :name, breed = :breed, age = :age WHERE id = :id";
         return entityManager.createQuery(queryString)
-                .setParameter("name", name)
-                .setParameter("breed", breed)
-                .setParameter("age", age)
+                .setParameter("name", dog.getName())
+                .setParameter("breed", dog.getBreed())
+                .setParameter("age", dog.getAge())
                 .setParameter("id", id)
                 .executeUpdate();
     }

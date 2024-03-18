@@ -24,9 +24,7 @@ public class DogController {
 
     DogController(DogServiceImpl dogService) {
         this.dogService = dogService;
-        this.dogService.saveDog("dobby", "greyhound", 6);
-        this.dogService.saveDog("bella", "border collie", 6);
-        this.dogService.saveDog("luna", "border collie", 6);
+        this.createMockDogs();
     }
 
     @Get(produces = MediaType.APPLICATION_JSON)
@@ -41,7 +39,17 @@ public class DogController {
 
     @Post
     HttpResponse<Dog> save(@Body @Valid SaveDogCommand cmd) {
-        Dog dog = this.dogService.saveDog(cmd.getName(), cmd.getBreed(), cmd.getAge());
+        Dog dog = new Dog(cmd.getName(), cmd.getBreed(), cmd.getAge());
+        this.dogService.saveDog(dog);
         return HttpResponse.created(dog);
+    }
+
+    private void createMockDogs() {
+        Dog dog1 = new Dog("Dobby", "Greyhound", 6);
+        Dog dog2 = new Dog("Luna", "Border Collie", 1);
+        Dog dog3 = new Dog("Bella", "Border Collie", 11);
+        this.dogService.saveDog(dog1);
+        this.dogService.saveDog(dog2);
+        this.dogService.saveDog(dog3);
     }
 }
