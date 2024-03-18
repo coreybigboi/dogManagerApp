@@ -1,35 +1,32 @@
 package com.dogmanagerapp.models;
 
-import io.micronaut.serde.annotation.Serdeable;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "dogs")
-@Serdeable.Serializable()
-public class Dog {
-
+@Table(name = "owners")
+public class Owner {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    public int id;
 
     @Column
-    private String name;
+    public String name;
 
     @Column
-    private String breed;
+    public int age;
 
     @Column
-    private int age;
+    public String address;
 
-    public Dog() {
+    public Owner() {
 
     }
 
-    public Dog(int id, String name, String breed, int age) {
+    public Owner(int id, String name, int age, String address) {
         this.id = id;
         this.name = name;
-        this.breed = breed;
         this.age = age;
+        this.address = address;
     }
 
     public int getId() {
@@ -48,19 +45,19 @@ public class Dog {
         this.name = name;
     }
 
-    public String getBreed() {
-        return breed;
-    }
-
-    public void setBreed(String breed) {
-        this.breed = breed;
-    }
-
     public int getAge() {
         return age;
     }
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
