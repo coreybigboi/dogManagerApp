@@ -3,12 +3,14 @@ package com.dogmanagerapp.repositories;
 import com.dogmanagerapp.models.Owner;
 import io.micronaut.transaction.annotation.ReadOnly;
 import io.micronaut.transaction.annotation.Transactional;
+import jakarta.inject.Singleton;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 import java.util.Optional;
 
+@Singleton
 public class OwnerRepositoryImpl implements OwnerRepository {
     private final EntityManager entityManager;
 
