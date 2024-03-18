@@ -1,34 +1,19 @@
 package com.dogmanagerapp.services;
 
 import com.dogmanagerapp.models.Dog;
-import com.dogmanagerapp.repositories.DogRepositoryImpl;
-import jakarta.inject.Singleton;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.List;
+import java.util.Optional;
 
-@Singleton
-public class DogService {
+public interface DogService {
+    Optional<Dog> findDogById(long id);
 
-    private final DogRepositoryImpl dogRepository;
+    Dog saveDog(@NotBlank String name, String breed, int age);
 
-    public DogService(DogRepositoryImpl dogRepository) {
-        this.dogRepository = dogRepository;
-    }
+    void deleteDogById(long id);
 
-    private Dog[] getMockDogs() {
-        final int numDogs = 5;
-        Dog[] dogs = new Dog[numDogs];
-        for(int i = 0; i < numDogs; i++) {
-            String name = "Dog " + i;
-            String breed = "Breed " + i;
-            int age = 1 + i;
-            Dog dog = new Dog(name, breed, age);
-            dogs[i] = dog;
-        }
-        return dogs;
-    }
+    List<Dog> findAllDogs();
 
-    public List<Dog> getAllDogs() {
-        return this.dogRepository.findAll();
-    }
+    int updateDog(long id, String name, String breed, int age);
 }
