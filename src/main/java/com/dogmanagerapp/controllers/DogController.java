@@ -14,7 +14,6 @@ import java.util.List;
 @ExecuteOn(TaskExecutors.BLOCKING)
 @Controller("/api/dogs")
 public class DogController {
-
     private final DogService dogService;
 
     public DogController(DogService dogService) {
