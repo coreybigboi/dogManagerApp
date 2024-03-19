@@ -1,5 +1,6 @@
 package com.dogmanagerapp.controllers;
 
+import com.dogmanagerapp.application.OwnerDto;
 import com.dogmanagerapp.models.Owner;
 import com.dogmanagerapp.services.OwnerService;
 import io.micronaut.http.HttpResponse;
@@ -23,12 +24,12 @@ public class OwnerController {
     }
 
     @Get(produces = MediaType.APPLICATION_JSON)
-    public List<Owner> getOwners() {
+    public List<OwnerDto> getOwners() {
         return this.ownerService.findAllOwners();
     }
 
     @Get(value = "/{id}", produces = MediaType.APPLICATION_JSON)
-    public Owner getOwnerById(Long id) {
+    public OwnerDto getOwnerById(Long id) {
         return this.ownerService.findOwnerById(id).orElse(null);
     }
 
