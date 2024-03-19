@@ -29,6 +29,13 @@ public class Dog {
 
     }
 
+    public Dog(long id, String name, String breed, int age) {
+        this.id = id;
+        this.name = name;
+        this.breed = breed;
+        this.age = age;
+    }
+
     public Dog(String name, String breed, int age) {
         this.name = name;
         this.breed = breed;
