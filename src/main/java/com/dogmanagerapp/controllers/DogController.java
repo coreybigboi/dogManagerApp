@@ -1,5 +1,6 @@
 package com.dogmanagerapp.controllers;
 
+import com.dogmanagerapp.application.DogDto;
 import com.dogmanagerapp.models.Dog;
 import com.dogmanagerapp.services.DogService;
 import io.micronaut.http.HttpResponse;
@@ -22,12 +23,12 @@ public class DogController {
     }
 
     @Get(produces = MediaType.APPLICATION_JSON)
-    public List<Dog> getDogs() {
+    public List<DogDto> getDogs() {
         return dogService.findAllDogs();
     }
 
     @Get(value = "/{id}", produces = MediaType.APPLICATION_JSON)
-    public Dog getDogById(Long id){
+    public DogDto getDogById(Long id){
         return this.dogService.findDogById(id).orElse(null);
     }
 

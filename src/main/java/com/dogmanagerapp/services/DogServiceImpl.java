@@ -1,6 +1,8 @@
 package com.dogmanagerapp.services;
 
+import com.dogmanagerapp.application.DogDtoMapper;
 import com.dogmanagerapp.models.Dog;
+import com.dogmanagerapp.application.DogDto;
 import com.dogmanagerapp.repositories.DogRepository;
 import jakarta.inject.Singleton;
 
@@ -17,18 +19,21 @@ public class DogServiceImpl implements DogService {
     }
 
     @Override
-    public Optional<Dog> findDogById(long id) {
-        return this.dogRepository.findById(id);
+    public Optional<DogDto> findDogById(long id) {
+        Optional<Dog> dog = this.dogRepository.findById(id);
+        return dog.map(DogDtoMapper::toDto);
     }
 
     @Override
-    public List<Dog> findAllDogs() {
-        return this.dogRepository.findAll();
+    public List<DogDto> findAllDogs() {
+        List<Dog> dogs = this.dogRepository.findAll();
+        return DogDtoMapper.toDtoList(dogs);
     }
 
     @Override
-    public Dog saveDog(Dog dog) {
-        return this.dogRepository.save(dog);
+    public DogDto saveDog(Dog dog) {
+        Dog result = this.dogRepository.save(dog);
+        return DogDtoMapper.toDto(result);
     }
 
     @Override
