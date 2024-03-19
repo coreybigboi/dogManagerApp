@@ -3,17 +3,17 @@ package com.dogmanagerapp.controllers;
 import io.micronaut.serde.annotation.Serdeable;
 
 @Serdeable
-public class DogUpdateCommand {
+public class OwnerUpdateCommand {
     private long id;
     private String name;
-    private String breed;
     private int age;
+    private String address;
 
-    public DogUpdateCommand(long id, String name, String breed, int age) {
+    public OwnerUpdateCommand(long id, String name, int age, String address) {
         this.id = id;
         this.name = name;
-        this.breed = breed;
         this.age = age;
+        this.address = address;
     }
 
     public long getId() {
@@ -32,19 +32,19 @@ public class DogUpdateCommand {
         this.name = name;
     }
 
-    public String getBreed() {
-        return breed;
-    }
-
-    public void setBreed(String breed) {
-        this.breed = breed;
-    }
-
     public int getAge() {
         return age;
     }
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

@@ -10,7 +10,6 @@ import io.micronaut.scheduling.annotation.ExecuteOn;
 import jakarta.validation.Valid;
 
 import java.util.List;
-import java.util.Optional;
 
 @ExecuteOn(TaskExecutors.BLOCKING)
 @Controller("/api/dogs")
@@ -24,32 +23,32 @@ public class DogController {
     }
 
     @Get(produces = MediaType.APPLICATION_JSON)
-    public List<Dog> index() {
+    public List<Dog> getDogs() {
         return dogService.findAllDogs();
     }
 
     @Get(value = "/{id}", produces = MediaType.APPLICATION_JSON)
-    public Optional<Dog> getDog(Long id){
-        return this.dogService.findDogById(id);
+    public Dog getDogById(Long id){
+        return this.dogService.findDogById(id).orElse(null);
     }
 
     @Post
-    HttpResponse<Dog> save(@Body @Valid DogSaveCommand cmd) {
+    HttpResponse<Dog> saveDog(@Body @Valid DogSaveCommand cmd) {
         Dog dog = new Dog(cmd.getName(), cmd.getBreed(), cmd.getAge());
         this.dogService.saveDog(dog);
         return HttpResponse.created(dog);
     }
 
     @Put
-    HttpResponse<?> update(@Body @Valid DogUpdateCommand cmd){
-        Dog dog = new Dog(cmd.getName(), cmd.getBreed(), cmd.getAge());
-        int result = this.dogService.updateDog(cmd.getId(), dog);
+    HttpResponse<?> updateDog(@Body @Valid DogUpdateCommand cmd){
+        Dog updated = new Dog(cmd.getName(), cmd.getBreed(), cmd.getAge());
+        int result = this.dogService.updateDog(cmd.getId(), updated);
 
         return HttpResponse.noContent();
     }
 
     @Delete("/{id}")
-    HttpResponse<?> delete(Long id) {
+    HttpResponse<?> deleteDog(Long id) {
         this.dogService.deleteDogById(id);
         return HttpResponse.noContent();
     }

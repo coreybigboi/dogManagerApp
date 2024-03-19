@@ -1,46 +1,17 @@
-package com.dogmanagerapp.models;
+package com.dogmanagerapp.controllers;
 
 import io.micronaut.serde.annotation.Serdeable;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "owners")
 @Serdeable
-public class Owner {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
-    @NotNull
-    @Column
+public class OwnerSaveCommand {
     private String name;
-
-    @NotNull
-    @Column
     private int age;
-
-    @NotNull
-    @Column
     private String address;
 
-    public Owner() {
-
-    }
-
-    public Owner(String name, int age, String address) {
-        this.id = id;
+    public OwnerSaveCommand(String name, int age, String address) {
         this.name = name;
         this.age = age;
         this.address = address;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
