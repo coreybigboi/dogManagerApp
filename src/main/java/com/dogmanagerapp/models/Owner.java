@@ -28,6 +28,13 @@ public class Owner {
 
     }
 
+    public Owner(long id, String name, int age, String address) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.address = address;
+    }
+
     public Owner(String name, int age, String address) {
         this.id = id;
         this.name = name;
